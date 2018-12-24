@@ -1,0 +1,13 @@
+{
+  "BotPrefix": "!",
+  "BotID": "431328912090464266",
+  "ServerID": "393826512052158464",
+  "BotLogID": "431650344947154944",
+  "CommandRoles": [
+  	"429891322099269642",
+  	"431331169431322626",
+    "432439667028262922"
+    ],
+  "OptInUnder": "opt-in-under",
+  "OptInAbove": "opt-in-above"
+}
