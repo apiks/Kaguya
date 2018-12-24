@@ -40,11 +40,11 @@ func Start() {
 	// Reads set react joins from reactChannelJoin.json
 	features.ReactInfoRead()
 
+	// Discord Playing Status
+	goBot.AddHandler(misc.StatusReady)
+
 	// Abstraction of a command handler
 	goBot.AddHandler(features.HandleCommand)
-
-	// Discord Status
-	goBot.AddHandler(misc.StatusReady)
 
 	// React Channel Join Handler
 	goBot.AddHandler(features.ReactJoinHandler)
