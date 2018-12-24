@@ -58,8 +58,6 @@ func ReadConfig() error {
 	OptInUnder = config.OptInUnder
 	OptInAbove = config.OptInAbove
 
-	os.Setenv("KaguyaToken", "NTI2NzEyNTgyMDExMDkyOTky.DwJZyQ.lBDN7_C7ge2UOsLeRvoO7b1cZ4Q")
-
 	// Takes the bot token from the environment variable. Reason is to avoid pushing token to github
 	if os.Getenv("KaguyaToken") == "" {
 		panic("No token set in your environment variables for key \"KaguyaToken\"")
