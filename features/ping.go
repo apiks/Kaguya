@@ -3,10 +3,10 @@ package features
 import (
 	"github.com/bwmarrin/discordgo"
 
-	//"github.com/r-anime/Kaguya/config"
-	//"github.com/r-anime/Kaguya/misc"
-	"../config"
-	"../misc"
+	"github.com/r-anime/Kaguya/config"
+	"github.com/r-anime/Kaguya/misc"
+	//"../config"
+	//"../misc"
 )
 
 // Returns a message on "ping" to see if bot is alive

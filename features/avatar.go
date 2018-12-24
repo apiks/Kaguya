@@ -5,10 +5,10 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	//"github.com/r-anime/Kaguya/config"
-	//"github.com/r-anime/Kaguya/misc"
-	"../config"
-	"../misc"
+	"github.com/r-anime/Kaguya/config"
+	"github.com/r-anime/Kaguya/misc"
+	//"../config"
+	//"../misc"
 )
 
 // Returns user avatar in channel as message

@@ -10,8 +10,8 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	//"github.com/r-anime/Kaguya/config"
-	"../config"
+	"github.com/r-anime/Kaguya/config"
+	//"../config"
 )
 
 // File for misc. functions, commands and variables

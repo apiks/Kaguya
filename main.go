@@ -5,13 +5,13 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	//"github.com/r-anime/Kaguya/config"
-	//"github.com/r-anime/Kaguya/features"
-	//"github.com/r-anime/Kaguya/misc"
-	"./config"
-	"./features"
-	"./misc"
-)
+	"github.com/r-anime/Kaguya/config"
+	"github.com/r-anime/Kaguya/features"
+	"github.com/r-anime/Kaguya/misc"
+//	"./config"
+//	"./features"
+//	"./misc"
+//)
 
 func main() {
 	err := config.ReadConfig()
