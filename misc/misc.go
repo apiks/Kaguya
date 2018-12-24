@@ -166,7 +166,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Content == fmt.Sprintf("<@%v>", s.State.User.ID) {
 		randomNum := rand.Intn(5)
 		if randomNum == 1 {
-			_, err := s.ChannelMessageSend(m.ChannelID, "You dare address me? How... cute.")
+			_, err := s.ChannelMessageSend(m.ChannelID, "You dare address me? How... cute...")
 			if err != nil {
 				_, err = s.ChannelMessageSend(config.BotLogID, err.Error()+"\n"+ErrorLocation(err))
 				if err != nil {
@@ -176,7 +176,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 			}
 		}
 		if randomNum == 2 {
-			_, err := s.ChannelMessageSend(m.ChannelID, "Ugh, you're such a pig. Err, I mean, gokigenyo.")
+			_, err := s.ChannelMessageSend(m.ChannelID, "Ugh, you're such a pig. Err, I mean, gokigenyou.")
 			if err != nil {
 				_, err = s.ChannelMessageSend(config.BotLogID, err.Error()+"\n"+ErrorLocation(err))
 				if err != nil {
@@ -186,7 +186,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 			}
 		}
 		if randomNum == 3 {
-			_, err := s.ChannelMessageSend(m.ChannelID, "The life of a plebeian must be so hard. Here, have an alm .")
+			_, err := s.ChannelMessageSend(m.ChannelID, "The life of a plebeian must be so hard. Here, have 500 yen.")
 			if err != nil {
 				_, err = s.ChannelMessageSend(config.BotLogID, err.Error()+"\n"+ErrorLocation(err))
 				if err != nil {

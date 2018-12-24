@@ -11,7 +11,7 @@ import (
 
 // Returns a message on "ping" to see if bot is alive
 func pingCommand(s *discordgo.Session, m *discordgo.Message) {
-	_, err := s.ChannelMessageSend(m.ChannelID, "An insect wishes to inquire as to my well-being? How... cute.")
+	_, err := s.ChannelMessageSend(m.ChannelID, "An insect wishes to inquire as to my well-being? How... cute...")
 	if err != nil {
 		_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
 		if err != nil {
