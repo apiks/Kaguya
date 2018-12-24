@@ -43,6 +43,9 @@ func Start() {
 	// Abstraction of a command handler
 	goBot.AddHandler(features.HandleCommand)
 
+	// Discord Status
+	goBot.AddHandler(misc.StatusReady)
+
 	// React Channel Join Handler
 	goBot.AddHandler(features.ReactJoinHandler)
 

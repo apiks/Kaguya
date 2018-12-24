@@ -217,3 +217,14 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 	}
 }
+
+// Discord status
+func StatusReady(s *discordgo.Session, e *discordgo.Ready) {
+	err := s.UpdateStatus(0, "Love is War")
+	if err != nil {
+		_, err = s.ChannelMessageSend(config.BotLogID, err.Error())
+		if err != nil {
+			fmt.Println(err.Error() + "\n" + ErrorLocation(err))
+		}
+	}
+}
