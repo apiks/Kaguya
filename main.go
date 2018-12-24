@@ -11,7 +11,7 @@ import (
 //	"./config"
 //	"./features"
 //	"./misc"
-//)
+)
 
 func main() {
 	err := config.ReadConfig()
