@@ -29,12 +29,7 @@ func main() {
 func Start() {
 	goBot, err := discordgo.New("Bot " + config.Token)
 	if err != nil {
-		panic(err)
-	}
-
-	err = goBot.Open()
-	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 
 	// Reads set react joins from reactChannelJoin.json
@@ -54,6 +49,11 @@ func Start() {
 
 	// BOT Fluff on BOT Ping
 	goBot.AddHandler(misc.OnBotPing)
+
+	err = goBot.Open()
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	fmt.Println("Bot is running!")
 }
