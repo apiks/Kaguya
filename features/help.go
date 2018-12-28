@@ -132,7 +132,7 @@ func helpEmbed(s *discordgo.Session, m *discordgo.Message, admin bool) error {
 func helpPlaintextCommand(s *discordgo.Session, m *discordgo.Message) {
 	plainHelp := "`" + config.BotPrefix + "about` | Shows information about me.\n" +
 		"`" + config.BotPrefix + "avatar [@user or userID]` | Show user avatar. Add [@mention] or [userID] to specify a user.\n" +
-		"`" + config.BotPrefix + "help` | Print all available commands in embed form." +
+		"`" + config.BotPrefix + "help` | Print all available commands in embed form.\n" +
 		"`" + config.BotPrefix + "helpplain` | Print all available commands in plain text.\n" +
 		"`" + config.BotPrefix + "join` | Join a spoiler channel.\n" +
 		"`" + config.BotPrefix + "leave` | Leave a spoiler channel.\n"
