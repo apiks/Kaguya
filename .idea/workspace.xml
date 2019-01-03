@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b022ca2-abdf-4d63-b6a7-d3fa9219aca0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/features/about.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/about.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/help.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/help.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/channelnavigation.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/channelnavigation.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,32 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/help.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="139" column="58" lean-forward="true" selection-start-line="139" selection-start-column="58" selection-end-line="139" selection-end-column="58" />
-              <folding>
-                <element signature="e#18#176#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/features/about.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-              <folding>
-                <element signature="e#18#160#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -69,12 +43,12 @@
         <option value="$PROJECT_DIR$/features/avatar.go" />
         <option value="$PROJECT_DIR$/features/commandhandler.go" />
         <option value="$PROJECT_DIR$/features/say.go" />
-        <option value="$PROJECT_DIR$/features/channelnavigation.go" />
         <option value="$PROJECT_DIR$/features/ping.go" />
         <option value="$PROJECT_DIR$/misc/misc.go" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/features/help.go" />
         <option value="$PROJECT_DIR$/features/about.go" />
+        <option value="$PROJECT_DIR$/features/channelnavigation.go" />
       </list>
     </option>
   </component>
@@ -89,7 +63,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -120,6 +93,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -154,9 +128,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28997868" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29317698" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -251,16 +224,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/channelnavigation.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="1025" column="27" selection-start-line="1025" selection-start-column="27" selection-end-line="1025" selection-end-column="27" />
-          <folding>
-            <element signature="e#18#223#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/features/commandhandler.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -315,7 +278,7 @@
     <entry file="file://$PROJECT_DIR$/features/help.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
-          <caret line="139" column="58" lean-forward="true" selection-start-line="139" selection-start-column="58" selection-end-line="139" selection-end-column="58" />
+          <caret line="139" column="58" selection-start-line="139" selection-start-column="58" selection-end-line="139" selection-end-column="58" />
           <folding>
             <element signature="e#18#176#0" expanded="true" />
           </folding>
@@ -325,9 +288,19 @@
     <entry file="file://$PROJECT_DIR$/features/about.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding>
             <element signature="e#18#160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/channelnavigation.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="1020" column="41" lean-forward="true" selection-start-line="1020" selection-start-column="41" selection-end-line="1020" selection-end-column="41" />
+          <folding>
+            <element signature="e#18#223#0" expanded="true" />
           </folding>
         </state>
       </provider>
