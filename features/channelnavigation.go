@@ -576,7 +576,7 @@ func ReactInfoRead() {
 	misc.GlobalMutex.Unlock()
 }
 
-// Writes react channel join info to ReactChannelJoinWrite.json
+// Writes react channel join info to ReactChannelJoin.json
 func ReactChannelJoinWrite(info map[string]*reactChannelJoinStruct) {
 
 	// Turns info slice into byte ready to be pushed to file

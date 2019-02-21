@@ -174,6 +174,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 				}
 				return
 			}
+			return
 		}
 		if randomNum == 2 {
 			_, err := s.ChannelMessageSend(m.ChannelID, "Ugh, you're such a pig. Err, I mean, gokigenyou.")
@@ -184,6 +185,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 				}
 				return
 			}
+			return
 		}
 		if randomNum == 3 {
 			_, err := s.ChannelMessageSend(m.ChannelID, "The life of a plebeian must be so hard. Here, have 500 yen.")
@@ -194,6 +196,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 				}
 				return
 			}
+			return
 		}
 		if randomNum == 4 {
 			_, err := s.ChannelMessageSend(m.ChannelID, "Dogs bark and are loyal. Cats laze around but are regal. You buzz around, accomplishing nothing. Just like an insect.")
@@ -204,6 +207,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 				}
 				return
 			}
+			return
 		}
 		if randomNum == 5 {
 			_, err := s.ChannelMessageSend(m.ChannelID, "Is pinging me really the most fun thing you can do right now? You have my condolences.")
@@ -214,6 +218,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 				}
 				return
 			}
+			return
 		}
 	}
 }
