@@ -225,5 +225,11 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 // Discord Playing status
 func StatusReady(s *discordgo.Session, e *discordgo.Ready) {
-	_ = s.UpdateStatus(0, "Love is War")
+	err = s.UpdateStatus(0, "Love is War")
+	if err != nil {
+		_, err = s.ChannelMessageSend(config.BotLogID, err.Error()+"\n"+ErrorLocation(err))
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
 }
