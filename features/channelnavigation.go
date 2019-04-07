@@ -1023,7 +1023,7 @@ func deleteChannelReacts(s *discordgo.Session, m *discordgo.Message) {
 	commandStrings := strings.SplitN(m.Content, " ", 2)
 
 	if len(commandStrings) != 2 {
-		_, err := s.ChannelMessageSend(m.ChannelID, "Usage: `" + config.BotPrefix + "killchannelreacts` [channel]`")
+		_, err := s.ChannelMessageSend(m.ChannelID, "Usage: `" + config.BotPrefix + "killchannelreacts` [channel]")
 		if err != nil {
 			_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
 			if err != nil {
