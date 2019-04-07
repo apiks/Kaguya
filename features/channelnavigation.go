@@ -1170,7 +1170,6 @@ func init() {
 		aliases:  []string{"setreactjoin", "addreact"},
 		desc:     "Sets a react join on a specific message, role and emote.",
 		elevated: true,
-		category: "reacts",
 	})
 	add(&command{
 		execute:  removeReactJoinCommand,
@@ -1178,7 +1177,6 @@ func init() {
 		aliases:  []string{"removereactjoin", "deletereact"},
 		desc:     "Removes a set react join.",
 		elevated: true,
-		category: "reacts",
 	})
 	add(&command{
 		execute:  viewReactJoinsCommand,
@@ -1186,7 +1184,6 @@ func init() {
 		aliases:  []string{"viewreactjoins", "viewreact", "viewreacts", "reacts", "react"},
 		desc:     "Views all set react joins.",
 		elevated: true,
-		category: "reacts",
 	})
 	add(&command{
 		execute:  joinCommand,
@@ -1194,7 +1191,6 @@ func init() {
 		aliases:  []string{"joinchannel"},
 		desc:     "Join a spoiler channel.",
 		deleteAfter: true,
-		category: "normal",
 	})
 	add(&command{
 		execute:  leaveCommand,
@@ -1202,7 +1198,6 @@ func init() {
 		aliases:  []string{"leavechannel"},
 		desc:     "Leave a spoiler channel.",
 		deleteAfter: true,
-		category: "normal",
 	})
 	add(&command{
 		execute:  deleteChannelReacts,
@@ -1210,7 +1205,6 @@ func init() {
 		aliases:  []string{"removechannelreacts", "removechannelreact", "killchannelreact", "deletechannelreact", "deletechannelreacts"},
 		desc:     "Removes all reacts linked to a specific channel.",
 		elevated: true,
-		category: "reacts",
 	})
 	add(&command{
 		execute:  deleteCategoryReacts,
@@ -1218,6 +1212,5 @@ func init() {
 		aliases:  []string{"removecategoryreacts", "removecategoryreact", "killcategoryreact", "deletecategoryreact", "deletecategoryreacts"},
 		desc:     "Removes all reacts linked to a specific category.",
 		elevated: true,
-		category: "reacts",
 	})
 }
