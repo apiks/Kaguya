@@ -1053,7 +1053,7 @@ func deleteChannelReacts(s *discordgo.Session, m *discordgo.Message) {
 	roleName = strings.Replace(roleName, "--", "-", -1)
 
 	// Deletes all set reacts that link to the role ID if not using Kaguya
-	misc.GlobaMutex.Lock()
+	misc.GlobalMutex.Lock()
 	for messageID, roleMapMap := range reactChannelJoinMap {
 		for _, roleEmojiMap := range roleMapMap.RoleEmojiMap {
 			for role, emojiSlice := range roleEmojiMap {
@@ -1064,15 +1064,15 @@ func deleteChannelReacts(s *discordgo.Session, m *discordgo.Message) {
 						message.ID = messageID
 						message.Author = &author
 						message.Content = fmt.Sprintf("%vremovereact %v %v", config.BotPrefix, messageID, emoji)
-						misc.GlobaMutex.Unlock()
+						misc.GlobalMutex.Unlock()
 						removeReactJoinCommand(s, &message)
-						misc.GlobaMutex.Lock()
+						misc.GlobalMutex.Lock()
 					}
 				}
 			}
 		}
 	}
-	misc.GlobaMutex.Unlock()
+	misc.GlobalMutex.Unlock()
 
 	if m.Author.ID == s.State.User.ID {
 		return
