@@ -2,6 +2,7 @@ package features
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"regexp"
 	"strconv"
@@ -1008,6 +1009,160 @@ func leaveCommand(s *discordgo.Session, m *discordgo.Message) {
 	}
 }
 
+// Deletes all reacts linked to a specific channel
+func deleteChannelReacts(s *discordgo.Session, m *discordgo.Message) {
+	var (
+		channelID 		string
+		channelName 	string
+		roleName		string
+
+		message 		discordgo.Message
+		author  		discordgo.User
+	)
+
+	commandStrings := strings.SplitN(m.Content, " ", 2)
+
+	if len(commandStrings) != 2 {
+		_, err := s.ChannelMessageSend(m.ChannelID, "Usage: `" + config.BotPrefix + "killchannelreacts` [channel]`")
+		if err != nil {
+			_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
+			if err != nil {
+				return
+			}
+			return
+		}
+		return
+	}
+
+	// Fetches channel ID
+	channelID, channelName = misc.ChannelParser(s, commandStrings[1])
+	if channelID == "" && channelName == "" {
+		_, err := s.ChannelMessageSend(m.ChannelID, "Error: No such channel exists.")
+		if err != nil {
+			_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
+			if err != nil {
+				return
+			}
+			return
+		}
+		return
+	}
+
+	// Fixes role name bug by hyphenating the channel name
+	roleName = strings.Replace(strings.TrimSpace(channelName), " ", "-", -1)
+	roleName = strings.Replace(roleName, "--", "-", -1)
+
+	// Deletes all set reacts that link to the role ID if not using Kaguya
+	misc.MapMutex.Lock()
+	for messageID, roleMapMap := range reactChannelJoinMap {
+		for _, roleEmojiMap := range roleMapMap.RoleEmojiMap {
+			for role, emojiSlice := range roleEmojiMap {
+				if strings.ToLower(role) == strings.ToLower(roleName) {
+					for _, emoji := range emojiSlice {
+						// Remove React Join command
+						author.ID = s.State.User.ID
+						message.ID = messageID
+						message.Author = &author
+						message.Content = fmt.Sprintf("%vremovereact %v %v", config.BotPrefix, messageID, emoji)
+						misc.MapMutex.Unlock()
+						removeReactJoinCommand(s, &message)
+						misc.MapMutex.Lock()
+					}
+				}
+			}
+		}
+	}
+	misc.MapMutex.Unlock()
+
+	if m.Author.ID == s.State.User.ID {
+		return
+	}
+	_, err := s.ChannelMessageSend(m.ChannelID, "Success: Channel `" + channelName + "`'s set react joins were removed!")
+	if err != nil {
+		_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
+		if err != nil {
+			return
+		}
+		return
+	}
+}
+
+// Deletes all reacts linked to the channels of a specific category
+func deleteCategoryReacts(s *discordgo.Session, m *discordgo.Message) {
+	var (
+		categoryID 		string
+		categoryName	string
+
+		message 		discordgo.Message
+		author  		discordgo.User
+	)
+
+	commandStrings := strings.SplitN(m.Content, " ", 2)
+
+	if len(commandStrings) != 2 {
+		_, err := s.ChannelMessageSend(m.ChannelID, "Usage: `" + config.BotPrefix + "killcategoryreacts` [category]")
+		if err != nil {
+			_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
+			if err != nil {
+				return
+			}
+			return
+		}
+		return
+	}
+
+	// Fetches category ID
+	categoryID, categoryName = misc.ChannelParser(s, commandStrings[1])
+	if categoryID == "" {
+		_, err := s.ChannelMessageSend(m.ChannelID, "Error: No such category exists.")
+		if err != nil {
+			_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
+			if err != nil {
+				return
+			}
+			return
+		}
+		return
+	}
+
+	_, err := s.ChannelMessageSend(m.ChannelID, "Starting channel react deletion. For categories with a lot of channels you will have to wait more. A message will be sent when it is done.")
+	if err != nil {
+		_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
+		if err != nil {
+			return
+		}
+		return
+	}
+
+	channels, err := s.GuildChannels(config.ServerID)
+	if err != nil {
+		misc.CommandErrorHandler(s, m, err)
+		return
+	}
+	for _, channel := range channels {
+		if channel.ParentID == categoryID {
+			// Delete channel reacts Command
+			author.ID = s.State.User.ID
+			message.Author = &author
+			message.ChannelID = m.ChannelID
+			message.Content = fmt.Sprintf("%vkillchannelreacts %v", config.BotPrefix, channel.ID)
+			deleteChannelReacts(s, &message)
+		}
+	}
+
+	if m.Author.ID == s.State.User.ID {
+		return
+	}
+	_, err = s.ChannelMessageSend(m.ChannelID, "Success: Category `" + categoryName + "`'s set react joins were removed!")
+	if err != nil {
+		_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + misc.ErrorLocation(err))
+		if err != nil {
+			return
+		}
+		return
+	}
+}
+
 func init() {
 	add(&command{
 		execute:  setReactJoinCommand,
@@ -1048,5 +1203,21 @@ func init() {
 		desc:     "Leave a spoiler channel.",
 		deleteAfter: true,
 		category: "normal",
+	})
+	add(&command{
+		execute:  deleteChannelReacts,
+		trigger:  "killchannelreacts",
+		aliases:  []string{"removechannelreacts", "removechannelreact", "killchannelreact", "deletechannelreact", "deletechannelreacts"},
+		desc:     "Removes all reacts linked to a specific channel.",
+		elevated: true,
+		category: "reacts",
+	})
+	add(&command{
+		execute:  deleteCategoryReacts,
+		trigger:  "killcategoryreacts",
+		aliases:  []string{"removecategoryreacts", "removecategoryreact", "killcategoryreact", "deletecategoryreact", "deletecategoryreacts"},
+		desc:     "Removes all reacts linked to a specific category.",
+		elevated: true,
+		category: "reacts",
 	})
 }

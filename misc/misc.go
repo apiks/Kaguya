@@ -233,3 +233,104 @@ func StatusReady(s *discordgo.Session, e *discordgo.Ready) {
 		}
 	}
 }
+
+// Parses a string for a channel and returns its ID and name
+func ChannelParser(s *discordgo.Session, channel string) (string, string) {
+	var (
+		channelID 	string
+		channelName string
+		flag		bool
+	)
+
+	// If it's a channel ping remove <# and > from it to get the channel ID
+	if strings.Contains(channel, "#") {
+		channelID = strings.TrimPrefix(channel,"<#")
+		channelID = strings.TrimSuffix(channelID,">")
+	}
+
+	// Check if it's an ID by length and save the ID if so
+	_, err := strconv.Atoi(channel)
+	if len(channel) >= 17 && err == nil {
+		channelID = channel
+	}
+
+	// Find the channelID if it doesn't exists via channel name, else find the channel name
+	channels, err := s.GuildChannels(config.ServerID)
+	if err != nil {
+		_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + ErrorLocation(err))
+		if err != nil {
+			return channelID, channelName
+		}
+		return channelID, channelName
+	}
+	for _, cha := range channels {
+		if channelID == "" {
+			if strings.ToLower(cha.Name) == strings.ToLower(channel) {
+				channelID = cha.ID
+				channelName = cha.Name
+				flag = true
+				break
+			}
+		}
+		if cha.ID == channelID {
+			channelName = cha.Name
+			flag = true
+			break
+		}
+	}
+
+	if !flag {
+		return "", ""
+	}
+
+	return channelID, channelName
+}
+
+// Parses a string for a category and returns its ID and name
+func CategoryParser(s *discordgo.Session, category string) (string, string) {
+	var (
+		categoryID 		string
+		categoryName 	string
+		flag			bool
+	)
+
+	// Check if it's an ID by length and save the ID if so
+	_, err := strconv.Atoi(category)
+	if len(category) >= 17 && err == nil {
+		categoryID = category
+	}
+
+	// Find the categoryID if it doesn't exists via category name, else find the category name
+	channels, err := s.GuildChannels(config.ServerID)
+	if err != nil {
+		_, err = s.ChannelMessageSend(config.BotLogID, err.Error() + "\n" + ErrorLocation(err))
+		if err != nil {
+			return categoryID, categoryID
+		}
+		return categoryID, categoryName
+	}
+	for _, cha := range channels {
+		if categoryID == "" {
+			if cha.Type != discordgo.ChannelTypeGuildCategory {
+				continue
+			}
+			if strings.ToLower(cha.Name) == strings.ToLower(category) {
+				categoryID = cha.ID
+				categoryName = cha.Name
+				flag = true
+				break
+			}
+		}
+		if cha.ID == categoryID {
+			categoryName = cha.Name
+			flag = true
+			break
+		}
+	}
+
+	if !flag {
+		return "", ""
+	}
+
+	return categoryID, categoryName
+}
