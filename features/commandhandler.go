@@ -56,6 +56,10 @@ func HandleCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 		s.State.RWMutex.RUnlock()
 		return
 	}
+	if m.Author.Bot {
+		s.State.RWMutex.RUnlock()
+		return
+	}
 	if len(m.Message.Content) == 0 {
 		s.State.RWMutex.RUnlock()
 		return
