@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/bwmarrin/discordgo" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/r-anime/Kaguya" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/golang.org/x/crypto" vcs="Git" />
+    <mapping directory="" vcs="Git" />
   </component>
 </project>
