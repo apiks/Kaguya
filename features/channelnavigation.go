@@ -882,6 +882,9 @@ func joinCommand(s *discordgo.Session, m *discordgo.Message) {
 		} else {
 			success += "You have joined " + chanMention
 		}
+		if topic != "" {
+			success = success + "\n **Topic:** " + topic
+		}
 
 		// Sends success message to user in DMs if possible
 		dm, err := s.UserChannelCreate(m.Author.ID)
