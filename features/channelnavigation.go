@@ -1172,7 +1172,7 @@ func deleteCategoryReacts(s *discordgo.Session, m *discordgo.Message) {
 	}
 
 	// Fetches category ID
-	categoryID, categoryName = misc.ChannelParser(s, commandStrings[1])
+	categoryID, categoryName = misc.CategoryParser(s, commandStrings[1])
 	if categoryID == "" {
 		_, err := s.ChannelMessageSend(m.ChannelID, "Error: No such category exists.")
 		if err != nil {
