@@ -880,7 +880,7 @@ func joinCommand(s *discordgo.Session, m *discordgo.Message) {
 		if chanMention == "" {
 			success += role.Name
 		} else {
-			success += "You have joined " + chanMention
+			success += chanMention
 		}
 		if topic != "" {
 			success = success + "\n **Topic:** " + topic
@@ -1071,7 +1071,7 @@ func leaveCommand(s *discordgo.Session, m *discordgo.Message) {
 		if chanMention == "" {
 			success += role.Name
 		} else {
-			success += "You have left " + chanMention
+			success += chanMention
 		}
 
 		// Sends success message to user in DMs if possible
