@@ -93,7 +93,7 @@ func GetUserID(s *discordgo.Session, m *discordgo.Message, messageSlice []string
 
 // Print fluff message on bot ping
 func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if m.Content == fmt.Sprintf("<@%v>", s.State.User.ID) && m.Author.ID == "128312718779219968" {
+	if (m.Content == fmt.Sprintf("<@%v>", s.State.User.ID) || m.Content == fmt.Sprintf("<@!%v>", s.State.User.ID)) && m.Author.ID == "128312718779219968" {
 		_, err := s.ChannelMessageSend(m.ChannelID, "Ah, creator. Please have a nice day.")
 		if err != nil {
 			_, err = s.ChannelMessageSend(config.BotLogID, err.Error()+"\n"+ErrorLocation(err))
@@ -104,7 +104,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 		return
 	}
-	if m.Content == fmt.Sprintf("<@%v>", s.State.User.ID) && m.Author.ID == "66207186417627136" {
+	if (m.Content == fmt.Sprintf("<@%v>", s.State.User.ID) || m.Content == fmt.Sprintf("<@!%v>", s.State.User.ID)) && m.Author.ID == "66207186417627136" {
 		randomNum := rand.Intn(5)
 		if randomNum == 0 {
 			_, err := s.ChannelMessageSend(m.ChannelID, "Scum of the earth.")
@@ -163,7 +163,7 @@ func OnBotPing(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 		return
 	}
-	if m.Content == fmt.Sprintf("<@%v>", s.State.User.ID) {
+	if m.Content == fmt.Sprintf("<@%v>", s.State.User.ID) || m.Content == fmt.Sprintf("<@!%v>", s.State.User.ID) {
 		randomNum := rand.Intn(5)
 		if randomNum == 0 {
 			_, err := s.ChannelMessageSend(m.ChannelID, "You dare address me? How... cute...")
